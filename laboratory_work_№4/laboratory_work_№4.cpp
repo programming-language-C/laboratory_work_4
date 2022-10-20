@@ -8,10 +8,11 @@ using namespace std;
 //другим, считать его равным нулю.Количество элементов в массиве не более 200.
 //Формат числа цц.ц.Массив распечатывать по десять элементов на строке.
 
-float round_value(float value, int accuracy)
+double round_value(double value, int accuracy)
 {
 	int rounding_to = pow(10, accuracy);
-	return floor(value * rounding_to) / rounding_to;
+	return round(value * rounding_to) / rounding_to;
+
 }
 
 int main()
@@ -33,7 +34,7 @@ int main()
 
 	//заполнение массива и вывод значений в консоль
 	const int n = count_elements_arr;
-	float* arr_of_numbers = new float[n];
+	double* arr_of_numbers = new double[n];
 
 	srand(time(NULL)); //рандомизация - инициализация ДСЧ
 	cout << "Целочисленный массив из " << n << " случайных чисел:\n";
@@ -41,7 +42,7 @@ int main()
 	int BORDER_RANDOMAZER = 100;
 	for (int i = 0; i < n; i++)
 	{
-		float random_number = ((float)rand() / (float)(RAND_MAX)) * BORDER_RANDOMAZER;
+		double random_number = (double)(((double)rand() / (double)(RAND_MAX)) * BORDER_RANDOMAZER);
 		arr_of_numbers[i] = round_value(random_number, 1);
 		str_numbers_arr += "a[" + std::to_string(i) + "]=" + std::to_string(arr_of_numbers[i]);
 
@@ -92,7 +93,7 @@ int main()
 
 	// Подсчёт avg
 	int count_number_between_max_min_numbers = abs(index_initial - index_end) - 1;
-	float sum_numbers_arr_between_max_min_numbers = 0,
+	double sum_numbers_arr_between_max_min_numbers = 0,
 		avg_numbers_arr;
 	if (count_number_between_max_min_numbers)
 	{
