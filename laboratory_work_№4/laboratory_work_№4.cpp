@@ -8,6 +8,7 @@ using namespace std;
 //другим, считать его равным нулю.Количество элементов в массиве не более 200.
 //Формат числа цц.ц.Массив распечатывать по десять элементов на строке.
 
+//double: представляет вещественное число двойной точности с плавающей точкой
 double round_value(double value, int accuracy)
 {
 	int rounding_to = pow(10, accuracy);
@@ -34,7 +35,8 @@ int main()
 
 	//заполнение массива и вывод значений в консоль
 	const int n = count_elements_arr;
-	double* arr_of_numbers = new double[n];
+	//new double[n] - new = выделение памяти под массив(те создание динамического массива)
+	double *arr_of_numbers = new double[n];
 
 	srand(time(NULL)); //рандомизация - инициализация ДСЧ
 	cout << "Целочисленный массив из " << n << " случайных чисел:\n";
@@ -42,7 +44,9 @@ int main()
 	int BORDER_RANDOMAZER = 100;
 	for (int i = 0; i < n; i++)
 	{
-		double random_number = (double)(((double)rand() / (double)(RAND_MAX)) * BORDER_RANDOMAZER);
+		//rand() - диапазон Функция от 0 до RAND_MAX(32767)
+		//RAND_MAX - это максимальное число, которое может выдать функция rand(); Обычно это число == 32767.
+		double random_number = ((double)rand() / (double)RAND_MAX) * BORDER_RANDOMAZER;
 		arr_of_numbers[i] = round_value(random_number, 1);
 		str_numbers_arr += "a[" + std::to_string(i) + "]=" + std::to_string(arr_of_numbers[i]);
 
